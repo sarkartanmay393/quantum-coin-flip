@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quantum Coin Flip</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #6b3fa0, #4a90e2);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .coin {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            margin: 20px;
+            cursor: pointer;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .coin.flipping {
+            animation: flip 1.5s ease-in-out;
+        }
+
+        @keyframes flip {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(720deg); }
+        }
+
+        .coin-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            backface-visibility: hidden;
+        }
+
+        .heads {
+            background: gold;
+            border: 4px solid #ffd700;
+        }
+
+        .tails {
+            background: silver;
+            border: 4px solid #c0c0c0;
+            transform: rotateY(180deg);
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            background: #fff;
+            color: #6b3fa0;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .quantum-state {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        @keyframes quantum-glitch {
+            0% { opacity: 1; filter: hue-rotate(0deg) brightness(1); }
+            25% { opacity: 0.9; filter: hue-rotate(90deg) brightness(1.2); }
+            50% { opacity: 1; filter: hue-rotate(180deg) brightness(1); }
+            75% { opacity: 0.9; filter: hue-rotate(270deg) brightness(1.2); }
+            100% { opacity: 1; filter: hue-rotate(360deg) brightness(1); }
+        }
+
+        .quantum-circuit {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .quantum-wire {
+            stroke: #00ffff;
+            stroke-width: 2;
+        }
+
+        .gate {
+            fill: #ff00ff;
+            stroke: white;
+        }
+
+        .measurement {
+            fill: #00ff00;
+        }
+
+        .parallel-lines {
+            stroke: rgba(255, 255, 255, 0.3);
+            stroke-dasharray: 4;
+            animation: flowLines 1s linear infinite;
+        }
+
+        @keyframes flowLines {
+            to {
+                stroke-dashoffset: -8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Quantum Coin Flip</h1>
+    <div class="coin">
+        <div class="coin-face heads">H</div>
+        <div class="coin-face tails">T</div>
+    </div>
+    <button onclick="flipCoin()">Flip Quantum Coin</button>
+    <div class="quantum-state" id="quantumState">
+        Click to flip the quantum coin!
+    </div>
+    <div class="quantum-circuit" id="circuitDiagram"></div>
+
+    <div class="info-box" style="margin-top: 30px; max-width: 600px; padding: 20px; background: rgba(0, 0, 0, 0.2); border-radius: 10px;">
+        <h3 style="color: #00ffff;">How is this different from regular computing?</h3>
+        <p>
+            In classical computing (like your phone or laptop), a coin flip would use Math.random() - basically picking either 0 or 1. The coin is always in one definite state.
+        </p>
+        <p>
+            But in quantum computing:
+            <ul>
+                <li>We start with a quantum bit (qubit) in state |0⟩</li>
+                <li>Using a Hadamard gate (H), we create a superposition where the coin exists in multiple realities simultaneously!</li>
+                <li>In one "universe" it's heads, in another it's tails - and these universes coexist until we measure</li>
+                <li>When we measure it, these parallel realities "collapse" into our single reality</li>
+            </ul>
+        </p>
+        <p style="font-style: italic; color: #00ffff;">
+            This isn't just sci-fi - it's real quantum mechanics! This ability to process multiple possibilities simultaneously is what makes quantum computers potentially much more powerful than classical computers.
+        </p>
+        <p style="background: rgba(0, 255, 255, 0.1); padding: 10px; border-radius: 5px;">
+            <strong>Mind-bending fact:</strong> Until we measure it, our quantum coin exists in a superposition of all possible states - it's both heads AND tails at the same time, in parallel universes that temporarily coexist!
+        </p>
+
+        <h3 style="color: #00ffff; margin-top: 20px;">What are Quantum Gates?</h3>
+        <p>
+            Quantum gates are like the basic building blocks of quantum circuits - similar to how classical computers use AND, OR, and NOT gates. They manipulate qubits to perform quantum operations.
+        </p>
+        <p>
+            Common quantum gates and their future applications:
+            <ul>
+                <li><strong>Hadamard (H) Gate:</strong> Creates superposition by putting a qubit in an equal mixture of 0 and 1 states.
+                    <ul>
+                        <li>Future Use: Quantum Machine Learning could use superposition to analyze all possible solutions simultaneously, potentially discovering new drug compounds millions of times faster than current methods.</li>
+                    </ul>
+                </li>
+                <li><strong>X Gate (NOT):</strong> Flips a qubit from |0⟩ to |1⟩ or vice versa
+                    <ul>
+                        <li>Future Use: Quantum Error Correction in fault-tolerant quantum computers, essential for maintaining quantum states in future quantum internet infrastructure.</li>
+                    </ul>
+                </li>
+                <li><strong>Z Gate:</strong> Adds a phase difference between states
+                    <ul>
+                        <li>Future Use: Quantum Cryptography systems that could be completely unhackable, as any attempt to intercept the message would collapse the quantum state.</li>
+                    </ul>
+                </li>
+                <li><strong>CNOT Gate:</strong> A two-qubit gate for controlled operations
+                    <ul>
+                        <li>Future Use: Quantum Simulation of complex molecular interactions could revolutionize materials science, leading to perfect solar panels or room-temperature superconductors.</li>
+                    </ul>
+                </li>
+                <li><strong>Toffoli Gate:</strong> A three-qubit gate that enables reversible computing
+                    <ul>
+                        <li>Future Use: Climate modeling that could process vast amounts of data to predict weather patterns and climate change with unprecedented accuracy.</li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+        <p style="background: rgba(0, 255, 255, 0.1); padding: 10px; border-radius: 5px;">
+            <strong>Why aren't we using these now?</strong> Current quantum computers are still in their infancy. They suffer from "decoherence" (quantum states breaking down) and require extreme conditions (near absolute zero temperatures). Scientists are working to overcome these challenges, but it might take 5-10 years before we see practical applications.
+        </p>
+        <p style="background: rgba(0, 255, 255, 0.1); padding: 10px; border-radius: 5px; margin-top: 10px;">
+            <strong>Cool fact:</strong> The Hadamard gate we use puts our qubit in a perfect 50-50 superposition, making our quantum coin flip truly random, unlike classical random number generators!
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/quantum-circuit@0.9.226/dist/quantum-circuit.min.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> 
