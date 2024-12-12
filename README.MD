@@ -1,60 +1,34 @@
-# Quantum Coin Flip Simulator
+# Quantum Coin Flip
 
-A visual demonstration of quantum computing principles through an interactive coin flip simulation.
+This is a simple application that demonstrates the concept of quantum computing through a quantum coin flip. In classical computing, a coin flip would use Math.random() - basically picking either 0 or 1. The coin is always in one definite state. But in quantum computing, we start with a quantum bit (qubit) in state |0⟩. Using a Hadamard gate (H), we create a superposition where the coin exists in multiple realities simultaneously! In one "universe" it's heads, in another it's tails - and these universes coexist until we measure. When we measure it, these parallel realities "collapse" into our single reality.
 
-## Overview
+## How is this different from regular computing?
 
-This project simulates a quantum coin flip using real quantum computing principles, making complex quantum concepts accessible through an interactive interface.
+In classical computing (like your phone or laptop), a coin flip would use Math.random() - basically picking either 0 or 1. The coin is always in one definite state. But in quantum computing:
+- We start with a quantum bit (qubit) in state |0⟩
+- Using a Hadamard gate (H), we create a superposition where the coin exists in multiple realities simultaneously!
+- In one "universe" it's heads, in another it's tails - and these universes coexist until we measure
+- When we measure it, these parallel realities "collapse" into our single reality
 
-## How It Works
+## What are Quantum Gates?
 
-Unlike classical computing that uses deterministic binary states, quantum computing leverages quantum mechanical phenomena:
+Quantum gates are like the basic building blocks of quantum circuits - similar to how classical computers use AND, OR, and NOT gates. They manipulate qubits to perform quantum operations.
 
-1. We start with a quantum bit (qubit) in state |0⟩
-2. Using a Hadamard gate (H), we create a superposition where the coin exists in multiple realities simultaneously
-3. The coin exists in both heads and tails states until measurement
-4. Upon measurement, these parallel realities "collapse" into our single reality
+Common quantum gates and their future applications:
+- Hadamard (H) Gate: Creates superposition by putting a qubit in an equal mixture of 0 and 1 states.
+- X Gate (NOT): Flips a qubit from |0⟩ to |1⟩ or vice versa
+- Z Gate: Adds a phase difference between states
+- CNOT Gate: A two-qubit gate for controlled operations
+- Toffoli Gate: A three-qubit gate that enables reversible computing
 
-## Quantum Gates Explained
+## Why aren't we using these now?
 
-Quantum gates are the building blocks of quantum circuits. Here are some key gates and their future applications:
+Current quantum computers are still in their infancy. They suffer from "decoherence" (quantum states breaking down) and require extreme conditions (near absolute zero temperatures). Scientists are working to overcome these challenges, but it might take 5-10 years before we see practical applications.
 
-### Hadamard (H) Gate
-Creates superposition by putting a qubit in an equal mixture of 0 and 1 states.
-- **Future Use**: Quantum Machine Learning could analyze all possible solutions simultaneously, potentially discovering new drug compounds millions of times faster.
+## Cool fact:
 
-### X Gate (NOT)
-Flips a qubit from |0⟩ to |1⟩ or vice versa.
-- **Future Use**: Quantum Error Correction in fault-tolerant quantum computers, essential for quantum internet infrastructure.
+The Hadamard gate we use puts our qubit in a perfect 50-50 superposition, making our quantum coin flip truly random, unlike classical random number generators!
 
-### Z Gate
-Adds a phase difference between states.
-- **Future Use**: Quantum Cryptography systems that could be completely unhackable.
+![Short Note](./public//short-note.jpg)
 
-### CNOT Gate
-A two-qubit gate for controlled operations.
-- **Future Use**: Quantum Simulation of complex molecular interactions could revolutionize materials science.
 
-### Toffoli Gate
-A three-qubit gate enabling reversible computing.
-- **Future Use**: Climate modeling with unprecedented accuracy.
-
-## Current Limitations
-
-Current quantum computers face several challenges:
-- Decoherence (quantum states breaking down)
-- Require extreme conditions (near absolute zero temperatures)
-- Limited practical applications
-- 5-10 year estimated timeline for practical applications
-
-## Technical Implementation
-
-Built using HTML, CSS, and JavaScript, utilizing the [Quantum Circuit](https://www.npmjs.com/package/quantum-circuit) library for quantum computations.
-
-## Installation
-
-Simply open `index.html` in a modern web browser.
-
-## Dependencies
-
-- Quantum Circuit Library v0.9.226
